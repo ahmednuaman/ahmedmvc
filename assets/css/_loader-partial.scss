@@ -1,0 +1,31 @@
+#loader-partial {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // now that is what a _normal_ browser would be able to handle, but on
+  // Samsung devices they don't display the gif
+  // background: url(../img/loader.gif) no-repeat center #000000;
+  background: #000000;
+
+  // so we have to use a table; welcome to 1992 everyone!
+  table,
+  tr,
+  td {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  table {
+    width: 100%;
+    height: 100%;
+  }
+
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}

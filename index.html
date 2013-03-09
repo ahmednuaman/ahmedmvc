@@ -4,14 +4,29 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/app.css">
+    <!-- normally we'd load the css this way, but we're cache busting atm -->
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
     <title>Ahmed MVC</title>
   </head>
   <body>
     <div id="menu-partial" class="focus-parent" data-visible-index="0"></div>
     <div id="main-partial" class="focus-parent" data-visible-index="1"></div>
-    <div id="loader-partial"></div>
-    <script src="assets/js/app/bootstrap.js"></script>
+    <div id="loader-partial">
+      <table>
+        <tr>
+          <td>
+            <img src="assets/img/loader.gif">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- normally we'd load el js this way, but we're cache busting atm -->
+    <!--<script src="assets/js/app/bootstrap.js"></script>-->
+    <!-- so we load el js and css this way -->
+    <script>
+      document.write('<link rel="stylesheet" href="assets/css/app.css">');
+      document.write('<scr' + 'ipt src="assets/js/app/bootstrap.js"></scr' + 'ipt>');
+    </script>
     <script>
       bootstrap(function() {
         app();
