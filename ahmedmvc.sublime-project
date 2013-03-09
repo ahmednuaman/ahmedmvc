@@ -1,0 +1,17 @@
+{
+  "folders":
+  [
+    {
+      "path": "./",
+      "folder_exclude_patterns": [
+        "node_modules",
+        "vendor"
+      ],
+      "file_exclude_patterns": [
+        "*.css",
+        "*.js",
+        "*.map"
+      ]
+    }
+  ]
+}
