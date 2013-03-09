@@ -25,6 +25,7 @@ loadScript = (src, callback) ->
       # prevent any memory leaks by removing the script and any handlers
       script.onload = script.onreadystatechange = null
       head.removeChild script
+      script = null
 
       # fire our callback
       callback()
