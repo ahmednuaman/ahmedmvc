@@ -5,7 +5,7 @@ appStartCallback = null
 # this file won't be included in the optimised version of the app, instead we'll
 # use the loading order stored here to compile our app
 basePath = 'assets/js/app/'
-fileExt = '.js'
+fileExt = '.js?x=' + (new Date()).getTime()
 filesToLoad = [
   'app'
 ]
