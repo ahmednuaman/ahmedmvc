@@ -7,6 +7,7 @@ appStartCallback = null
 basePath = 'assets/js/app/'
 fileExt = '.js?x=' + (new Date()).getTime()
 filesToLoad = [
+  'core/injector'
   'app'
 ]
 

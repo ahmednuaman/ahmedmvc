@@ -31,9 +31,7 @@ class Injector
 
       if !dep?
         # uh oh
-        throw
-          name: 'ModuleNotFoundError'
-          message: "The module '#{name}' doesn't exist in Injector"
+        throw Error "The dependancy module '#{name}' doesn't exist in Injector"
 
       # otherwise add it to our deps array
       deps.push dep
@@ -41,12 +39,29 @@ class Injector
     # return the deps
     deps
 
-  inject: (target) ->
+  process: (name, target) ->
     # take our target and inject our dependancies into it, this runs our target
     # and returns a reference to the target's instance
     # we take the deps from arguments{1,}, so we take the arguments, convert it
     # to an array and get the entries after the first
-    depsArray = Array.prototype.slice.apply arguments, 1
+    depsArray = target['inject'] ? []
 
-    # now we apply the deps on to our target
-    target.apply target, @getDeps depsArray
+    # now we apply the deps on to our target depending on the target's type
+    switch target.type
+      when 'controller'
+        @processController name, target, @getDeps depsArray
+
+  processController: (name, klass, args) ->
+    # a generic solution to do `new Class([args])`, first set up a temp func
+    F = () ->
+      klass.apply klass, args
+
+    # reapply the prototype so that it's the klass's
+    F.prototype = klass.prototype
+
+    # start it all up
+    new F()
+
+# make our injector available globally
+window.injector = () ->
+  new Injector()
