@@ -1,0 +1,12 @@
+{
+  "name" : "ahmedmvc",
+  "version" : "0.0.0",
+  "private" : true,
+  "devDependencies" : {
+    "chai": "latest",
+    "grunt-coffeelint": "latest",
+    "grunt-contrib-coffee" : "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-mocha-test" : "latest"
+  }
+}

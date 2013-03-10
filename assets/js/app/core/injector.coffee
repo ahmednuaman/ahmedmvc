@@ -12,13 +12,21 @@ class Injector
     # already goes by this name
     if @modules[name]?
       # throw an error yo
-      throw
-        name: 'ModuleExistsError'
-        message: "The module '#{name}' already exists in Injector"
+      throw Error "The module '#{name}' already exists in Injector"
 
     else
       # create a ref
       @modules[name] = klass
+
+  getModule: (name) ->
+    # aims to return a single init'd module
+    module = @modules[name]
+
+    if !module?
+      # throw an error yo
+      throw Error "The module '#{name}' already exists in Injector"
+
+    module
 
   getDeps: (depsArray) ->
     # go through the `depsArray` and pick out the modules and then return an
@@ -31,7 +39,7 @@ class Injector
 
       if !dep?
         # uh oh
-        throw Error "The dependancy module '#{name}' doesn't exist in Injector"
+        throw Error "The dependancy '#{name}' doesn't exist in Injector"
 
       # otherwise add it to our deps array
       deps.push dep
@@ -49,12 +57,12 @@ class Injector
     # now we apply the deps on to our target depending on the target's type
     switch target.type
       when 'controller'
-        @processController name, target, @getDeps depsArray
+        return @processController name, target, @getDeps depsArray
 
   processController: (name, klass, args) ->
     # a generic solution to do `new Class([args])`, first set up a temp func
     Controller = () ->
-      klass.apply klass, args
+      klass.apply @, args
 
     # reapply the prototype so that it's the klass's
     Controller.prototype = klass.prototype
@@ -66,8 +74,7 @@ class Injector
 
 try
   # for testing
-  module.exports =
-    Injector: Injector
+  module.exports = Injector
 catch e
   # make our injector available globally
   window.injector = () ->

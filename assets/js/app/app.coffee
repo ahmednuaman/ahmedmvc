@@ -1,14 +1,9 @@
 # set up our app core
 class App
 
-  constructor: () ->
-    # set up our injector
-    @setupInjector()
-
-  setupInjector: () ->
+  constructor: (@injector) ->
     # store a ref to injector within our app, we shouldn't access it directly,
     # app will handle that shiz niz for us
-    @injector = injector()
 
   controller: (name, klass) ->
     # set the class's type to controller
@@ -22,8 +17,7 @@ class App
 
 try
   # for test
-  module.export =
-    App: App
+  module.exports = App
 catch e
   # fire up our app
-  window.app = new App()
+  window.app = new App injector
