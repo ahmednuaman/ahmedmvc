@@ -4,9 +4,13 @@ basePath = 'assets/js/app/'
 fileExt = '.js?x=' + (new Date()).getTime() # cache busting
 filesToLoad = [
   '../vendor/jquery/jquery' # really we should swap this with a custom build
+  '../vendor/lodash/lodash'
   '../vendor/when/when'
+  'core/rewrites'
   'core/injector'
   'app'
+  'model/menu-model'
+  'service/menu-service'
   'controller/loader-partial-controller'
   'controller/menu-partial-controller'
 ]

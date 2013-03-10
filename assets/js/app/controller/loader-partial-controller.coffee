@@ -15,5 +15,4 @@ class LoaderPartialController
   show: () ->
     element.show()
 
-# add it to our app
 app.module 'LoaderPartialController', LoaderPartialController
