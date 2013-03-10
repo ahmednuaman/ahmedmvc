@@ -2,6 +2,7 @@
   "name": "ahmedmvc",
   "version": "0.0.0",
   "dependencies": {
+    "jquery": "latest",
     "normalize.scss": "latest"
   }
 }

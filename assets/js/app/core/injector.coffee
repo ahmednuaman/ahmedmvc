@@ -75,5 +75,5 @@ try
   module.exports = Injector
 catch e
   # make our injector available globally
-  window.injector = () ->
+  window.injector = do () ->
     new Injector()

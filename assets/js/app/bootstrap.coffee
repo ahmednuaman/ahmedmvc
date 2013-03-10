@@ -3,8 +3,10 @@
 basePath = 'assets/js/app/'
 fileExt = '.js?x=' + (new Date()).getTime()
 filesToLoad = [
+  '../vendor/jquery/jquery'
   'core/injector'
   'app'
+  'controller/loader-partial-controller'
 ]
 head = null
 
