@@ -41,10 +41,38 @@ class MenuPartialController extends Controller
     throw new Error 'Failed to load menu items'
 
   handleRendered: () ->
-    # menu's rendered, let's set up location listener to determine which one is
+    # menu's rendered, create a reference to all the `<a>` tags
+    @links = @element.find('a').toArray()
+
+    # and make them all jquery objects
+    for link in @links
+      @links[_i] = $ link
+
+    # let's set up location listener to determine which one is
     # selected when the url changes
+    update = _.bind @stateUpdate, @
+    regex = 'section?\/?([^\/]+)?\/?([^\/]+)?\/?'
+
+    @stateManager.registerState regex, update, false
+
+    # force a state update
+    @stateUpdate()
 
     # hide the loader
-    # @loaderPartialController.hide()
+    @loaderPartialController.hide()
+
+  stateUpdate: () ->
+    # select menu item(s) depending on the current state
+    updateClass = _.bind @updateClass, @
+
+    for link in @links
+      updateClass link
+
+  updateClass: (link) ->
+    if link.attr('href').indexOf(window.location.hash) is 0
+      link.parent().addClass 'selected'
+
+    else
+      link.parent().removeClass 'selected'
 
 app.module 'MenuPartialController', MenuPartialController

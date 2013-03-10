@@ -47,7 +47,7 @@ class StateManager
     # that we can compile the regex one time rather than having to do it every
     # time the state changes
     statesCallback[stateRegex] = callback
-    statesRegex[stateRegex] = new RegExp stateRegex
+    statesRegex[stateRegex] = new RegExp stateRegex, 'gi'
 
     # we provide an optional argument on whether this callback should cancel the
     # look up of any further state callbacks, this is useful because we may not
