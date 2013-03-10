@@ -32,10 +32,12 @@ module.exports = (grunt) ->
       coffee:
         files: ['<%= coffee.app.src %>']
         tasks: [
-          'compass'
           'coffeelint'
           'coffee'
         ]
+      compass:
+        files: ['<%= compass.app.options.sassDir %>*.scss']
+        tasks: ['compass']
 
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
