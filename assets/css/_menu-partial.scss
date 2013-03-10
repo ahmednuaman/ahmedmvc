@@ -1,0 +1,59 @@
+#menu-partial {
+  display: block;
+  width: 100%;
+  height: 100px;
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    display: block;
+  }
+
+  li {
+    display: block;
+    float: left;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    line-height: normal;
+  }
+
+  a:focus {
+    background: $colourWhite;
+    color: $colourBlack;
+    text-decoration: underline;
+  }
+
+  ul.menu-partial-parent {
+    float: left;
+
+    li.selected ul.menu-partial-child {
+      visibility: visible;
+    }
+
+    a {
+      font-size: 15pt;
+      padding: 8px 20px;
+    }
+  }
+
+  ul.menu-partial-child {
+    visibility: hidden;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 40px;
+
+    a {
+      font-size: 11pt;
+      padding: 3px 10px;
+    }
+  }
+}

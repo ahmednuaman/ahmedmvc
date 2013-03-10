@@ -1,10 +1,10 @@
-<ul>
+<ul class="menu-partial-parent">
   {{#each items}}
     <li id="menu-link-{{name}}">
       <a href="#/section/{{name}}">
         {{title}}
       </a>
-      <ul>
+      <ul class="menu-partial-child">
         {{#each children}}
           <li id="menu-link-{{../name}}-{{name}}">
             <a href="#/section/{{../name}}/{{name}}">
