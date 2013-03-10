@@ -2,8 +2,8 @@
 # will get rendered within our main view partial
 class ViewController extends Controller
 
-  constructor: () ->
-    super()
+  constructor: (id) ->
+    super(id)
 
 try
   # for testing

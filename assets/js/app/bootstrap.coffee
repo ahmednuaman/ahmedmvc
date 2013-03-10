@@ -18,6 +18,8 @@ filesToLoad = [
   'service/menu-service'
   'controller/loader-partial-controller'
   'controller/menu-partial-controller'
+  'controller/section-partial-controller'
+  'controller/subsection-partial-controller'
 ]
 head = null
 
