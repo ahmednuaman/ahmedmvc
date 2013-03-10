@@ -50,23 +50,21 @@ class MenuPartialController extends Controller
     # let's set up location listener to determine which one is
     # selected when the url changes
     update = _.bind @stateUpdate, @
-    # regex = '^section?\/?([^\/]+)?\/?([^\/]+)?\/?$'
-    regex = '.*'
+    regex = '^section?\/?([^\/]+)?\/?'
 
     @stateManager.registerState regex, update, false
 
-  stateUpdate: () ->
-    console.log arguments
+  stateUpdate: (path) ->
     # select menu item(s) depending on the current state
-    updateClass = _.bind @updateClass, @
+    updateClass = _.bind @updateClass, @, path
 
     for link in @links
       updateClass link
 
-  updateClass: (link) ->
-    hashIndex = link.attr('href').indexOf(window.location.hash)
+  updateClass: (path, link) ->
+    hashIndex = link.attr('href').indexOf(path)
 
-    if hashIndex is 0 and window.location.hash.length > 1
+    if hashIndex isnt -1 and path.length > 1
       link.parent().addClass 'selected'
 
     else
