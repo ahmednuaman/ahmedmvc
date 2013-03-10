@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "jquery": "latest",
-    "normalize.scss": "latest"
+    "normalize.scss": "latest",
+    "when": "latest"
   }
 }
