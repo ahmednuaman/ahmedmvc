@@ -3,6 +3,7 @@
 basePath = 'assets/js/app/'
 fileExt = '.js?x=' + (new Date()).getTime() # cache busting
 filesToLoad = [
+  '../vendor/handlebars/handlebars'
   '../vendor/jquery/jquery' # really we should swap this with a custom build
   '../vendor/lodash/lodash'
   '../vendor/when/when'
