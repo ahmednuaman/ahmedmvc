@@ -9,6 +9,8 @@ filesToLoad = [
   'core/rewrites'
   'core/injector'
   'core/model'
+  'core/controller'
+  'core/view-controller'
   'app'
   'model/menu-model'
   'service/menu-service'
