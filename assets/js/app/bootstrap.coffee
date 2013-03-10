@@ -1,7 +1,7 @@
 # this file won't be included in the optimised version of the app, instead we'll
 # use the loading order stored here to compile our app
 basePath = 'assets/js/app/'
-fileExt = '.js?x=' + (new Date()).getTime() # cache busting
+fileExt = '.js' + debug # cache busting
 filesToLoad = [
   '../vendor/handlebars/handlebars'
   '../vendor/jquery/jquery' # really we should swap this with a custom build

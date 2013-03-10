@@ -17,7 +17,7 @@ class Controller
   loadPartial: () ->
     success = _.bind @handleLoadPartialSuccess, @
     failure = _.bind @handleLoadPartialFailure, @
-    promise = $.get "assets/js/app/partial/#{@id}.html"
+    promise = $.get "assets/js/app/partial/#{@id}.html" + debug # bust el cache
 
     promise.then success, failure
 
