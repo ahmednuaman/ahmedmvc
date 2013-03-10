@@ -7,9 +7,13 @@
 # `Controller` expects the `id` to be without the leading `#` as it also expects
 # there to be a partial in `assets/js/app/partial/` with the same name
 class MenuPartialController extends Controller
-  @inject = ['LoaderPartialController', 'MenuService']
+  @inject = [
+    'StateManager'
+    'LoaderPartialController'
+    'MenuService'
+  ]
 
-  constructor: (@loaderPartialController, @menuService) ->
+  constructor: (@stateManager, @loaderPartialController, @menuService) ->
     super('menu-partial')
 
     # let's loud our menu
@@ -37,7 +41,10 @@ class MenuPartialController extends Controller
     throw new Error 'Failed to load menu items'
 
   handleRendered: () ->
-    # menu's rendered, let's hide the loader
-    @loaderPartialController.hide()
+    # menu's rendered, let's set up location listener to determine which one is
+    # selected when the url changes
+
+    # hide the loader
+    # @loaderPartialController.hide()
 
 app.module 'MenuPartialController', MenuPartialController
