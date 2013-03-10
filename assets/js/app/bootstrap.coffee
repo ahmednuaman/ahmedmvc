@@ -1,7 +1,3 @@
-# our callback function to be handled when all scripts are loaded, at the moment
-# we just need it set up as a ref
-appStartCallback = null
-
 # this file won't be included in the optimised version of the app, instead we'll
 # use the loading order stored here to compile our app
 basePath = 'assets/js/app/'
@@ -10,10 +6,7 @@ filesToLoad = [
   'core/injector'
   'app'
 ]
-
-# this is where the magic happens, first we keep a ref to our DOM's head
-# as that's where we're gonna stick our scripts
-head = document.getElementsByTagName('head')[0]
+head = null
 
 # create our script loader function, we're gonna use `callback` for now as we've
 # not loaded our `deferred` library (f' tha po-lice)
@@ -45,8 +38,17 @@ loadScripts = () ->
     # run `loadScript` and pass self as a callback
     loadScript script, loadScripts
 
-# finally expose a function to the `window` where we can start all this bizniz
-# off of (that's right)
-window.bootstrap = () ->
-  # load our scripts!
-  loadScripts()
+try
+  # expose `filesToLoad` to node so that we can haz use it to build our app
+  module.exports =
+    filesToLoad: filesToLoad
+catch e
+  # finally expose a function to the `window` where we can start all this bizniz
+  # off of (that's right)
+  window.bootstrap = () ->
+    # this is where the magic happens, first we keep a ref to our DOM's head
+    # as that's where we're gonna stick our scripts
+    head = document.getElementsByTagName('head')[0]
+
+    # load our scripts!
+    loadScripts()
