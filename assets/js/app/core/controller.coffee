@@ -34,15 +34,21 @@ class Controller
     # and throw an error cos that partial ain't there
     throw Error "Failed to load partial #{@id}"
 
-  render: (data) ->
+  render: (data, dfd=null) ->
+    # we can choose to send our own deferred object to the render function
+    # incase we want to know when the rendering has been done
     # create a reference to our actual rendering function
-    render = _.bind @renderTemplate, @, data
+    render = _.bind @renderTemplate, @, data, dfd
 
     # wait on the render deferred object
     @renderDfd.then render, null
 
-  renderTemplate: (data) ->
+  renderTemplate: (data, dfd) ->
     @element.html @template data
+
+    # if a deferred object has been sent then resolve its ass
+    if dfd?
+      dfd.resolve()
 
 try
   # for testing

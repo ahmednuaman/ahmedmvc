@@ -7,9 +7,9 @@
 # `Controller` expects the `id` to be without the leading `#` as it also expects
 # there to be a partial in `assets/js/app/partial/` with the same name
 class MenuPartialController extends Controller
-  @inject = ['MenuService']
+  @inject = ['LoaderPartialController', 'MenuService']
 
-  constructor: (@menuService) ->
+  constructor: (@loaderPartialController, @menuService) ->
     super('menu-partial')
 
     # let's loud our menu
@@ -23,10 +23,21 @@ class MenuPartialController extends Controller
     promise.then success, failure
 
   handleLoadMenuSuccess: (items) ->
-    @render
+    # create a deferred object so we know when rendering is complete
+    dfd = whenjs.defer()
+    success = _.bind @handleRendered, @
+    data =
       items: items
+
+    dfd.then success, null
+
+    @render data, dfd
 
   handleLoadMenuFailure: () ->
     throw new Error 'Failed to load menu items'
+
+  handleRendered: () ->
+    # menu's rendered, let's hide the loader
+    @loaderPartialController.hide()
 
 app.module 'MenuPartialController', MenuPartialController
