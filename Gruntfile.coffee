@@ -13,6 +13,13 @@ module.exports = (grunt) ->
       files:
         src: ['<%= coffee.app.src %>']
 
+    compass:
+      app:
+        options:
+          sassDir: 'assets/css/'
+          cssDir: '<%= compass.app.options.sassDir %>'
+          imagesDir: 'assets/img/'
+
     mochaTest:
       files: ['test/**/*-test.coffee']
 
@@ -25,17 +32,20 @@ module.exports = (grunt) ->
       coffee:
         files: ['<%= coffee.app.src %>']
         tasks: [
+          'compass'
           'coffeelint'
           'coffee'
         ]
 
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-compass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-mocha-test'
 
   grunt.registerTask 'default', 'test our shizz', () ->
     grunt.task.run [
+      'compass'
       'coffeelint'
       'coffee'
       'mochaTest'

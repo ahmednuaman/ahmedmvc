@@ -6,6 +6,7 @@
     "chai": "latest",
     "grunt-coffeelint": "latest",
     "grunt-contrib-coffee" : "latest",
+    "grunt-contrib-compass" : "latest",
     "grunt-contrib-watch": "latest",
     "grunt-mocha-test" : "latest"
   }
