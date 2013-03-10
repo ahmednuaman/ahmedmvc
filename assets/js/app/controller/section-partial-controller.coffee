@@ -1,5 +1,5 @@
 # `#section-partial` controller extends `ViewController` as it'll be added to
-# the DOM by `MainViewController`
+# the DOM by `MainPartialController`
 class SectionPartialController extends ViewController
 
   constructor: () ->

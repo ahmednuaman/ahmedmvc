@@ -4,6 +4,8 @@
 class Controller
 
   constructor: (@id) ->
+
+  render: (data, dfd=null) ->
     # save a reference to our element
     @element = $ '#' + @id
 
@@ -11,13 +13,22 @@ class Controller
     # the partial has been loaded and templated
     @renderDfd = whenjs.defer()
 
-    # load our partial into a handlebars template
+    # we can choose to send our own deferred object to the render function
+    # incase we want to know when the rendering has been done
+    # create a reference to our actual rendering function
+    render = _.bind @renderTemplate, @, data, dfd
+
+    # wait on the render deferred object
+    @renderDfd.then render, null
+
+    # load our partial
     @loadPartial()
 
   loadPartial: () ->
+    # load our partial into a handlebars template
     success = _.bind @handleLoadPartialSuccess, @
     failure = _.bind @handleLoadPartialFailure, @
-    promise = $.get "assets/js/app/partial/#{@id}.html" + debug # bust el cache
+    promise = $.get "assets/js/app/partial/#{@id}.html"
 
     promise.then success, failure
 
@@ -34,21 +45,13 @@ class Controller
     # and throw an error cos that partial ain't there
     throw Error "Failed to load partial #{@id}"
 
-  render: (data, dfd=null) ->
-    # we can choose to send our own deferred object to the render function
-    # incase we want to know when the rendering has been done
-    # create a reference to our actual rendering function
-    render = _.bind @renderTemplate, @, data, dfd
-
-    # wait on the render deferred object
-    @renderDfd.then render, null
-
   renderTemplate: (data, dfd) ->
-    @element.html @template data
+    @html = @template data
+    @element.html @html
 
     # if a deferred object has been sent then resolve its ass
     if dfd?
-      dfd.resolve()
+      dfd.resolve
 
 try
   # for testing

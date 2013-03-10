@@ -1,7 +1,7 @@
 # this file won't be included in the optimised version of the app, instead we'll
 # use the loading order stored here to compile our app
 basePath = 'assets/js/app/'
-fileExt = '.js' + debug # cache busting
+fileExt = '.js'
 filesToLoad = [
   '../vendor/handlebars/handlebars'
   '../vendor/jquery/jquery' # really we should swap this with a custom build
@@ -16,10 +16,12 @@ filesToLoad = [
   'state-manager'
   'model/menu-model'
   'service/menu-service'
+  'controller/home-partial-controller'
   'controller/loader-partial-controller'
   'controller/menu-partial-controller'
   'controller/section-partial-controller'
   'controller/subsection-partial-controller'
+  'controller/main-partial-controller' # has to be after the other controllers
 ]
 head = null
 

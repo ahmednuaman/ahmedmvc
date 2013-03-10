@@ -9,11 +9,10 @@
 class MenuPartialController extends Controller
   @inject = [
     'StateManager'
-    'LoaderPartialController'
     'MenuService'
   ]
 
-  constructor: (@stateManager, @loaderPartialController, @menuService) ->
+  constructor: (@stateManager, @menuService) ->
     super('menu-partial')
 
     # let's loud our menu
@@ -54,12 +53,6 @@ class MenuPartialController extends Controller
     regex = 'section?\/?([^\/]+)?\/?([^\/]+)?\/?'
 
     @stateManager.registerState regex, update, false
-
-    # force a state update
-    @stateUpdate()
-
-    # hide the loader
-    @loaderPartialController.hide()
 
   stateUpdate: () ->
     # select menu item(s) depending on the current state

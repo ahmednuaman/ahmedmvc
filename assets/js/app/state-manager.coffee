@@ -35,8 +35,8 @@ class StateManager
         callback = statesCallback[state]
         callback.apply @, matches
 
-        if statesCancels[state]?
-          return
+        # if statesCancels[state]?
+        #   return
 
   registerState: (stateRegex, callback, cancels=true) ->
     # check that such state hasn't already been registered
@@ -52,11 +52,15 @@ class StateManager
     # we provide an optional argument on whether this callback should cancel the
     # look up of any further state callbacks, this is useful because we may not
     # want to load several views but we may want to update a menu when a view
-    # has loaded
-    statesCancels[stateRegex] = cancels
+    # has loaded, this is on hold at the mo
+    # statesCancels[stateRegex] = cancels
 
     # and finally add the state to our states array to keep a note of the
     # execution order, remember that backward loops are the fastest
     states.unshift stateRegex
+
+  invoke: () ->
+    # artificially invoke a state
+    @handleHashChange()
 
 app.module 'StateManager', StateManager
