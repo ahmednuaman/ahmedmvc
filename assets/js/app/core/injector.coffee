@@ -53,15 +53,22 @@ class Injector
 
   processController: (name, klass, args) ->
     # a generic solution to do `new Class([args])`, first set up a temp func
-    F = () ->
+    Controller = () ->
       klass.apply klass, args
 
     # reapply the prototype so that it's the klass's
-    F.prototype = klass.prototype
+    Controller.prototype = klass.prototype
+    Controller.prototype.toString = () ->
+      name
 
     # start it all up
-    new F()
+    new Controller()
 
-# make our injector available globally
-window.injector = () ->
-  new Injector()
+try
+  # for testing
+  module.exports =
+    Injector: Injector
+catch e
+  # make our injector available globally
+  window.injector = () ->
+    new Injector()

@@ -35,7 +35,7 @@ loadScript = (src, callback) ->
   head.appendChild script
 
 # now we create our iterator function that checks if there are more scripts to
-# be loaded otherwise it'll fire our starting app function
+# be loaded
 loadScripts = () ->
   # check that we _actually_ have scripts to load
   if filesToLoad.length
@@ -45,15 +45,8 @@ loadScripts = () ->
     # run `loadScript` and pass self as a callback
     loadScript script, loadScripts
 
-  else
-    # we can haz loaded our scripts, fire the starting gun!
-    appStartCallback()
-
 # finally expose a function to the `window` where we can start all this bizniz
 # off of (that's right)
-window.bootstrap = (callback) ->
-  # set our callback
-  appStartCallback = callback
-
+window.bootstrap = () ->
   # load our scripts!
   loadScripts()

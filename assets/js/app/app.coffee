@@ -20,25 +20,10 @@ class App
     # registers a controller with our app and subsequently with our injector
     @injector.register name, controller
 
-
-# fire up our app
-window.app = new App()
-
-class Dep
-
-  constructor: () ->
-
-  aMethod: () ->
-    console.log 'Dep.aMethod'
-
-app.controller 'Dep', Dep
-
-class Klass
-
-  constructor: (dep) ->
-    console.log dep
-    dep.aMethod()
-
-Klass.inject = ['Dep']
-
-app.controller 'Klass', Klass
+try
+  # for test
+  module.export =
+    App: App
+catch e
+  # fire up our app
+  window.app = new App()
