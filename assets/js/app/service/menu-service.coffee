@@ -15,7 +15,9 @@ class MenuService
     dfd.promise
 
   getSuccess: (dfd, response) ->
-    dfd.resolve response
+    @menuModel.add response
+
+    dfd.resolve @menuModel.all()
 
   getFailure: (dfd) ->
     dfd.reject()

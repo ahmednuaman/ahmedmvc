@@ -8,6 +8,7 @@ filesToLoad = [
   '../vendor/when/when'
   'core/rewrites'
   'core/injector'
+  'core/model'
   'app'
   'model/menu-model'
   'service/menu-service'
