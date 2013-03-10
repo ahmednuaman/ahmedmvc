@@ -50,11 +50,13 @@ class MenuPartialController extends Controller
     # let's set up location listener to determine which one is
     # selected when the url changes
     update = _.bind @stateUpdate, @
-    regex = 'section?\/?([^\/]+)?\/?([^\/]+)?\/?'
+    # regex = '^section?\/?([^\/]+)?\/?([^\/]+)?\/?$'
+    regex = '.*'
 
     @stateManager.registerState regex, update, false
 
   stateUpdate: () ->
+    console.log arguments
     # select menu item(s) depending on the current state
     updateClass = _.bind @updateClass, @
 

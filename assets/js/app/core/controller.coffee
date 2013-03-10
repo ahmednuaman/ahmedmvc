@@ -51,7 +51,7 @@ class Controller
 
     # if a deferred object has been sent then resolve its ass
     if dfd?
-      dfd.resolve
+      dfd.resolve()
 
 try
   # for testing
