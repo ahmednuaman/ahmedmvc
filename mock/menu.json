@@ -1,0 +1,36 @@
+{
+  "menu": [{
+      "title": "Browse 1",
+      "children": [{
+          "title": "Skateboarding dog"
+        }, {
+          "title": "Grumpy cat"
+        }, {
+          "title": "Puppies"
+        }, {
+          "title": "Crunk critters"
+        }]
+    }, {
+      "title": "Browse 2",
+      "children": [{
+          "title": "Car fail"
+        }, {
+          "title": "Person fail"
+        }, {
+          "title": "Skateboarding fail"
+        }, {
+          "title": "Failblog"
+        }]
+    }, {
+      "title": "Browse 3",
+      "children": [{
+          "title": "Nyan Cat"
+        }, {
+          "title": "Charlie"
+        }, {
+          "title": "Chad Vadar"
+        }, {
+          "title": "Matt Damon"
+        }]
+    }]
+}
