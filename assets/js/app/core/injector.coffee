@@ -54,23 +54,21 @@ class Injector
     # to an array and get the entries after the first
     depsArray = target['inject'] ? []
 
-    # now we apply the deps on to our target depending on the target's type
-    switch target.type
-      when 'controller'
-        return @processController name, target, @getDeps depsArray
+    # now we apply the deps on to our target
+    @processModule name, target, @getDeps depsArray
 
-  processController: (name, klass, args) ->
+  processModule: (name, klass, args) ->
     # a generic solution to do `new Class([args])`, first set up a temp func
-    Controller = () ->
+    C = () ->
       klass.apply @, args
 
     # reapply the prototype so that it's the klass's
-    Controller.prototype = klass.prototype
-    Controller.prototype.toString = () ->
+    C.prototype = klass.prototype
+    C.prototype.toString = () ->
       name
 
     # start it all up
-    new Controller()
+    new C()
 
 try
   # for testing

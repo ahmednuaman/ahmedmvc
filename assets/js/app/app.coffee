@@ -5,15 +5,12 @@ class App
     # store a ref to injector within our app, we shouldn't access it directly,
     # app will handle that shiz niz for us
 
-  controller: (name, klass) ->
-    # set the class's type to controller
-    klass.type = 'controller'
+  module: (name, klass) ->
+    # fire up the klass by injecting its deps into it
+    klass = @injector.process name, klass
 
-    # fire up the controller by injecting its deps into it
-    controller = @injector.process name, klass
-
-    # registers a controller with our app and subsequently with our injector
-    @injector.register name, controller
+    # registers a klass with our app and subsequently with our injector
+    @injector.register name, klass
 
 try
   # for test

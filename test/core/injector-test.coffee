@@ -5,10 +5,10 @@ App = require '../../assets/js/app/app'
 app = new App injector
 
 describe 'App.injector', () ->
-  describe 'controller', () ->
+  describe 'module', () ->
     response = 1
 
-    it 'should allow me to register a controller as a dependancy', () ->
+    it 'should allow me to register a module as a dependancy', () ->
       class Dependancy
 
         constructor: () ->
@@ -16,9 +16,9 @@ describe 'App.injector', () ->
         aMethod: () ->
           response
 
-      assert.ok app.controller 'Dependancy', Dependancy
+      assert.ok app.module 'Dependancy', Dependancy
 
-    it 'should allow me to register a controller as a dependant', () ->
+    it 'should allow me to register a module as a dependant', () ->
       class Dependant
 
         constructor: (@dependancy) ->
@@ -28,7 +28,7 @@ describe 'App.injector', () ->
 
       Dependant.inject = ['Dependancy']
 
-      dependant = app.controller 'Dependant', Dependant
+      dependant = app.module 'Dependant', Dependant
       assert.ok dependant
 
     it 'should let a dependant run a dependancy function just swell', () ->
