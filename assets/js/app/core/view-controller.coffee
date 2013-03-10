@@ -4,3 +4,10 @@ class ViewController extends Controller
 
   constructor: () ->
     super()
+
+try
+  # for testing
+  module.exports = ViewController
+catch e
+  # for app
+  window.ViewController = ViewController
