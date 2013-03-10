@@ -69,7 +69,9 @@ class MenuPartialController extends Controller
       updateClass link
 
   updateClass: (link) ->
-    if link.attr('href').indexOf(window.location.hash) is 0
+    hashIndex = link.attr('href').indexOf(window.location.hash)
+
+    if hashIndex is 0 and window.location.hash.length > 1
       link.parent().addClass 'selected'
 
     else
