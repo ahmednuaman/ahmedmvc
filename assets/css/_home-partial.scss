@@ -1,0 +1,31 @@
+#home-partial {
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    display: block;
+  }
+
+  li {
+    display: block;
+    float: left;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    line-height: normal;
+    padding: 10px;
+  }
+
+  a:focus {
+    background: $colourWhite;
+    color: $colourBlack;
+    text-decoration: underline;
+  }
+}
