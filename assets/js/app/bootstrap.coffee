@@ -62,7 +62,7 @@ try
 catch e
   # finally expose a function to the `window` where we can start all this bizniz
   # off of (that's right)
-  window.bootstrap = () ->
+  do () ->
     # this is where the magic happens, first we keep a ref to our DOM's head
     # as that's where we're gonna stick our scripts
     head = document.getElementsByTagName('head')[0]
