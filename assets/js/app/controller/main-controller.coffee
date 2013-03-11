@@ -37,7 +37,7 @@ class MainController
 
     # create a deferred object for when our controller has inited and is ready
     # to be added to the DOM
-    initComplete = _.bind @view.render, @view
+    initComplete = _.bind @view.render, @view, controller.view
     dfd = whenjs.defer()
 
     dfd.then initComplete, null

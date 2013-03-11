@@ -14,9 +14,9 @@ class MainView
   beforeRender: () ->
     @loaderView.show()
 
-  render: (html) ->
+  render: (view) ->
     # add the html to the DOM
-    element.html html
+    element.html view.html
 
     @loaderView.hide()
 
