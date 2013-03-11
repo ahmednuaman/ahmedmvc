@@ -15,10 +15,13 @@ filesToLoad = [
   'app'
   'state-manager'
   'model/menu-model'
+  'model/second-menu-model'
   'service/menu-service'
+  'service/second-menu-service'
   'controller/home-partial-controller'
   'controller/loader-partial-controller'
   'controller/menu-partial-controller'
+  'controller/second-menu-partial-controller'
   'controller/section-partial-controller'
   'controller/subsection-partial-controller'
   'controller/main-partial-controller' # has to be after the other controllers

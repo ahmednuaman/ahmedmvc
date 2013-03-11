@@ -1,9 +1,7 @@
 # our base `Model` class, it acts as a collection
 class Model
   # keep a reference to this model's data
-  @data: null
-
-  constructor: () ->
+  constructor: (@data=null) ->
 
   add: (data) ->
     @data = data
