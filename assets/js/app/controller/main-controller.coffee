@@ -1,19 +1,16 @@
 # `#main-partial` controller handles the adding and removing of views and their
 # controllers from the `#main-partial` DOM element; it uses `StateManager` to
 # route any stage changes according to the routes set out herein
-class MainPartialController
+class MainController
   @inject = [
+    'MainView'
     'StateManager'
-    'LoaderPartialController'
   ]
 
   # create an empty routes object
   routes = {}
 
-  # ref our DOM element
-  element = $ '#main-partial'
-
-  constructor: (@stateManager, @loaderPartialController) ->
+  constructor: (@view, @stateManager) ->
     # set up our routes
     @addRoutes()
 
@@ -38,21 +35,16 @@ class MainPartialController
     # get the controller from our injector
     controller = app.injector.getModule controller
 
-    # create a deferred object for when our controller has rendered and is ready
+    # create a deferred object for when our controller has inited and is ready
     # to be added to the DOM
-    rendered = _.bind @handleRouteRendered, @, controller
+    initComplete = _.bind @view.render, @view
     dfd = whenjs.defer()
 
-    dfd.then rendered, null
+    dfd.then initComplete, null
 
-    # render!
-    controller.render dfd
+    @view.beforeRender()
 
-  handleRouteRendered: (controller) ->
-    # add the controller to the DOM
-    element.html controller.html
+    # init!
+    controller.init dfd
 
-    # hide the loader
-    @loaderPartialController.hide()
-
-app.module 'MainPartialController', MainPartialController
+app.module 'MainController', MainController

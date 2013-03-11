@@ -1,8 +1,9 @@
-# `#subsection-partial` controller extends `ViewController` as it'll be added to
-# the DOM by `MainPartialController`
-class SubsectionPartialController extends ViewController
+class SubsectionPartialController extends Controller
+  @inject = [
+    'SubsectionPartialView'
+  ]
 
-  constructor: () ->
-    super('subsection-partial')
+  constructor: (view) ->
+    super(view)
 
 app.module 'SubsectionPartialController', SubsectionPartialController

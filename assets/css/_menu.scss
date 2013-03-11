@@ -1,4 +1,4 @@
-#menu-partial {
+#menu {
   display: block;
   width: 100%;
   height: 100px;
@@ -32,10 +32,10 @@
     text-decoration: underline;
   }
 
-  ul.menu-partial-parent {
+  ul.menu-parent {
     float: left;
 
-    li.selected ul.menu-partial-child {
+    li.selected ul.menu-child {
       visibility: visible;
     }
 
@@ -45,7 +45,7 @@
     }
   }
 
-  ul.menu-partial-child {
+  ul.menu-child {
     visibility: hidden;
     position: absolute;
     margin-left: 10px;

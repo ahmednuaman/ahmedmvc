@@ -1,5 +1,5 @@
-# this file won't be included in the optimised version of the app, instead we'll
-# use the loading order stored here to compile our app
+# this file won't be included in the optimised version of the app, instead we'll use the loading order stored here to
+# compile our app
 basePath = 'assets/js/app/'
 fileExt = '.js'
 filesToLoad = [
@@ -9,24 +9,30 @@ filesToLoad = [
   '../vendor/when/when'
   'rewrites'
   'core/injector'
-  'core/model'
   'core/controller'
-  'core/view-controller'
+  'core/model'
+  'core/view'
+  'core/partial-view'
   'app'
   'state-manager'
   'model/menu-model'
   'service/menu-service'
+  'view/loader-view'
+  'view/menu-view'
+  'view/home-partial-view'
+  'view/section-partial-view'
+  'view/subsection-partial-view'
+  'view/main-view'
+  'controller/menu-controller'
   'controller/home-partial-controller'
-  'controller/loader-partial-controller'
-  'controller/menu-partial-controller'
   'controller/section-partial-controller'
   'controller/subsection-partial-controller'
-  'controller/main-partial-controller' # has to be after the other controllers
+  'controller/main-controller'
 ]
 head = null
 
-# create our script loader function, we're gonna use `callback` for now as we've
-# not loaded our `deferred` library (f' tha po-lice)
+# create our script loader function, we're gonna use `callback` for now as we've not loaded our `deferred` library
+# (f' tha po-lice)
 loadScript = (src, callback) ->
   script = document.createElement 'script'
   script.src = basePath + src + fileExt
@@ -44,8 +50,7 @@ loadScript = (src, callback) ->
   # add the script to the head and watch out for **magic**
   head.appendChild script
 
-# now we create our iterator function that checks if there are more scripts to
-# be loaded
+# now we create our iterator function that checks if there are more scripts to be loaded
 loadScripts = () ->
   # check that we _actually_ have scripts to load
   if filesToLoad.length
@@ -60,11 +65,10 @@ try
   module.exports =
     filesToLoad: filesToLoad
 catch e
-  # finally expose a function to the `window` where we can start all this bizniz
-  # off of (that's right)
+  # finally expose a function to the `window` where we can start all this bizniz off of (that's right)
   do () ->
-    # this is where the magic happens, first we keep a ref to our DOM's head
-    # as that's where we're gonna stick our scripts
+    # this is where the magic happens, first we keep a ref to our DOM's head as that's where we're gonna stick
+    # our scripts
     head = document.getElementsByTagName('head')[0]
 
     # load our scripts!
