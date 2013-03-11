@@ -12,6 +12,11 @@ module.exports = (grunt) ->
     coffeelint:
       files:
         src: ['<%= coffee.app.src %>']
+      options:
+        max_line_length:
+        value: 120,
+        level: 'warn',
+        message: 'Line exceeds maximum allowed length'
 
     compass:
       app:
