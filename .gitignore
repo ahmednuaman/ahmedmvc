@@ -2,6 +2,7 @@
 assets/js/vendor
 docs
 node_modules
+ahmedmvc.sublime-workspace
 *.css
 *.js
 *.map
