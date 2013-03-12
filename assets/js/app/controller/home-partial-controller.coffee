@@ -1,9 +1,5 @@
 class HomePartialController extends Controller
-  @inject = [
-    'HomePartialView'
-  ]
 
-  constructor: (view) ->
-    super(view)
+  constructor: () ->
 
 app.module 'HomePartialController', HomePartialController

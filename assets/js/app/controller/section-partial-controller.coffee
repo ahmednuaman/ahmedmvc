@@ -1,9 +1,5 @@
 class SectionPartialController extends Controller
-  @inject = [
-    'SectionPartialView'
-  ]
 
-  constructor: (view) ->
-    super(view)
+  constructor: () ->
 
 app.module 'SectionPartialController', SectionPartialController

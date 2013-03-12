@@ -1,17 +1,38 @@
 class MainView
   @inject = [
+    'StateManager'
     'LoaderView'
   ]
 
-  element = $ '#main'
+  constructor: (@stateManager, @loaderView) ->
+    @element = $ '#main'
 
-  constructor: (@loaderView) ->
+    @addRoutes()
 
-  beforeRender: () ->
+  addRoutes: () ->
+    @addRoute '^$', 'HomePartialView'
+    @addRoute '^section/([^\/]+)/$', 'SectionPartialView'
+    @addRoute '^section/([^\/]+)/([^\/]+)/$', 'SubsectionPartialView'
+
+    @stateManager.invoke()
+
+  addRoute: (regex, view) ->
+    callback = _.bind @handleRoute, @, view
+
+    @stateManager.registerState regex, callback
+
+  handleRoute: (view) ->
+    view = app.injector.getModule view
+    renderComplete = _.bind @handleRouteRenderComplete, @, view
+    dfd = whenjs.defer()
+
     @loaderView.show()
 
-  render: (view) ->
-    element.html view.html
+    dfd.then renderComplete, null
+    view.render dfd
+
+  handleRouteRenderComplete: (view) ->
+    @element.empty().append view.element
 
     @loaderView.hide()
 

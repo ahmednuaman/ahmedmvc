@@ -1,8 +1,9 @@
-# `#home-partial` controller extends `PartialView` as it'll be added to
-# the DOM by `MainPartialView`
 class HomePartialView extends PartialView
+  @inject = [
+    'HomePartialController'
+  ]
 
-  constructor: () ->
-    super('home-partial')
+  constructor: (homePartialController) ->
+    super 'home-partial', homePartialController
 
 app.module 'HomePartialView', HomePartialView

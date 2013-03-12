@@ -1,10 +1,10 @@
 class View
-  constructor: (@id) ->
+  constructor: (@id, @controller) ->
 
-  render: (data, dfd=null) ->
+  render: (dfd) ->
     @element = $ '#' + @id
     @renderDfd = whenjs.defer()
-    render = _.bind @renderTemplate, @, data, dfd
+    render = _.bind @renderTemplate, @, dfd
 
     @renderDfd.then render, null
     @loadPartial()
@@ -26,11 +26,11 @@ class View
 
     throw Error "Failed to load partial #{@id}"
 
-  renderTemplate: (data, dfd) ->
-    @html = @template data
+  renderTemplate: (dfd) ->
+    @html = @template @data
     @element.html @html
 
-    dfd.resolve @html
+    dfd.resolve()
 
 try
   module.exports = View

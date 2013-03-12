@@ -1,28 +1,19 @@
 class MenuController extends Controller
   @inject = [
-    'MenuView'
     'MenuService'
   ]
 
-  constructor: (@view, @menuService) ->
-    @loadMenu()
+  constructor: (@menuService) ->
 
-  loadMenu: () ->
-    success = _.bind @handleLoadMenuSuccess, @
-    failure = _.bind @handleLoadMenuFailure, @
+  loadMenu: (dfd) ->
+    success = _.bind @handleLoadMenuSuccess, @, dfd
+    failure = _.bind @handleLoadMenuFailure, @, dfd
     promise = @menuService.get()
 
     promise.then success, failure
 
-  handleLoadMenuSuccess: (items) ->
-    dfd = whenjs.defer()
-    success = _.bind @view.handleRendered, @view
-    data =
-      items: items
-
-    dfd.then success, null
-
-    @view.render data, dfd
+  handleLoadMenuSuccess: (dfd, items) ->
+    dfd.resolve items
 
   handleLoadMenuFailure: () ->
     throw new Error 'Failed to load menu items'

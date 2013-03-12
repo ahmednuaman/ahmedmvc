@@ -1,12 +1,11 @@
 class LoaderView
-  element = $ '#loader'
-
   constructor: () ->
+    @element = $ '#loader'
 
   hide: () ->
-    element.hide()
+    @element.hide()
 
   show: () ->
-    element.show()
+    @element.show()
 
 app.module 'LoaderView', LoaderView

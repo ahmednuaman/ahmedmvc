@@ -1,7 +1,7 @@
 class PartialView extends View
 
-  constructor: (id) ->
-    super(id)
+  constructor: (id, controller) ->
+    super(id, controller)
 
   render: (dfd) ->
     @renderDfd = whenjs.defer()
@@ -11,9 +11,9 @@ class PartialView extends View
     @loadPartial()
 
   renderTemplate: (dfd) ->
-    @html = @template()
+    @element = $ @template @data
 
-    dfd.resolve @html
+    dfd.resolve()
 
 try
   module.exports = PartialView

@@ -1,10 +1,29 @@
 class MenuView extends View
   @inject = [
     'StateManager'
+    'MenuController'
   ]
 
-  constructor: (@stateManager) ->
-    super('menu')
+  constructor: (@stateManager, menuController) ->
+    super 'menu', menuController
+
+    @loadMenuData()
+
+  loadMenuData: () ->
+    dfd = whenjs.defer()
+    success = _.bind @handleMenuData, @
+
+    dfd.then success, null
+    @controller.loadMenu dfd
+
+  handleMenuData: (items) ->
+    dfd = whenjs.defer()
+    success = _.bind @handleRendered, @
+    @data =
+      items: items
+
+    dfd.then success, null
+    @render dfd
 
   handleRendered: () ->
     @links = @element.find('a').toArray()
