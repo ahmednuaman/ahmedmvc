@@ -9,4 +9,4 @@ Run `npm install; bower install;` and be sure that you have GruntJS and Mocha in
 Run `grunt`.
 
 ## I can haz docs?
-Run `grunt docs`.
+![image](http://i.qkme.me/3tc8uv.jpg)
