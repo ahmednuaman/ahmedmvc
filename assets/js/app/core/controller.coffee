@@ -14,8 +14,6 @@ class Controller
     dfd.resolve()
 
 try
-  # for testing
   module.exports = Controller
 catch e
-  # for app
   window.Controller = Controller

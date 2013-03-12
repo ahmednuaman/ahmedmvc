@@ -5,7 +5,6 @@ class MenuController extends Controller
   ]
 
   constructor: (@view, @menuService) ->
-    # let's loud our menu
     @loadMenu()
 
   loadMenu: () ->
@@ -16,7 +15,6 @@ class MenuController extends Controller
     promise.then success, failure
 
   handleLoadMenuSuccess: (items) ->
-    # create a deferred object so we know when rendering is complete
     dfd = whenjs.defer()
     success = _.bind @view.handleRendered, @view
     data =
