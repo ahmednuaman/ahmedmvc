@@ -4,7 +4,6 @@
   "private" : true,
   "devDependencies" : {
     "chai": "latest",
-    "doccoh": "latest",
     "grunt-coffeelint": "latest",
     "grunt-contrib-coffee" : "latest",
     "grunt-contrib-compass" : "latest",

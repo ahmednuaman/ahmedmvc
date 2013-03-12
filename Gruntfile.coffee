@@ -25,9 +25,6 @@ module.exports = (grunt) ->
           cssDir: '<%= compass.app.options.sassDir %>'
           imagesDir: 'assets/img/'
 
-    doccoh:
-      src: ['<%= coffee.app.src %>']
-
     mochaTest:
       files: ['test/**/*-test.coffee']
 
@@ -52,8 +49,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-compass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-mocha-test'
-
-  grunt.loadTasks 'task'
 
   grunt.registerTask 'default', 'test our shizz', () ->
     grunt.task.run [
