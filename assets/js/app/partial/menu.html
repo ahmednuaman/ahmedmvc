@@ -1,13 +1,27 @@
 <ul class="menu-parent">
   {{#each items}}
     <li id="menu-link-{{name}}">
-      <a href="#/section/{{name}}/" {{keyHandler '!leaveUp#menu' 'right' '!leaveDown#menu' 'left' index}}>
+      <a href="#/section/{{name}}/"
+        id="menu-link-{{name}}-a"
+        data-key-up="!leaveUp#menu"
+        data-key-right="#menu-link-{{next.name}}"
+        data-key-down="#menu-link-{{name}}-{{children.name}}-a"
+        data-key-left="#menu-link-{{prev.name}}"
+        data-col="{{index}}"
+        {{keyHandler}}>
         {{title}}
       </a>
       <ul class="menu-child">
         {{#each children}}
           <li id="menu-link-{{../name}}-{{name}}">
-            <a href="#/section/{{../name}}/{{name}}/" {{keyHandler '!leaveUp#menu' 'right' '!leaveDown#menu' 'left' ../index}}>
+            <a href="#/section/{{../name}}/{{name}}/"
+              id="menu-link-{{../name}}-{{name}}-a"
+              data-key-up="#menu li:nth-child({{index}}) a"
+              data-key-right="#menu-link-{{next.name}}"
+              data-key-down="!leaveDown#menu"
+              data-key-left="#menu-link-{{prev.name}}"
+              data-col="{{index}}"
+              {{keyHandler}}>
               {{title}}
             </a>
           </li>

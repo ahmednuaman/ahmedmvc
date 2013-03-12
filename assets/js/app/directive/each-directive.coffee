@@ -5,10 +5,10 @@ class EachDirective
   directive: (array, options) ->
     out = ''
 
-    array.reverse()
-
     for item in array
       item.index = _i
+      item.previous = array.slice _i - 1
+      item.next = if _i <= _len then array[_i] else array[0]
 
       out += options.fn item
 
