@@ -1,13 +1,13 @@
 <ul class="menu-parent">
   {{#each items}}
     <li id="menu-link-{{name}}">
-      <a href="#/section/{{name}}/" {{keyHandler 'dynamic: leaveUp#menu' 'right' 'dynamic: leaveDown#menu' 'left'}}>
+      <a href="#/section/{{name}}/" {{keyHandler '!leaveUp#menu' 'right' '!leaveDown#menu' 'left' index}}>
         {{title}}
       </a>
       <ul class="menu-child">
         {{#each children}}
           <li id="menu-link-{{../name}}-{{name}}">
-            <a href="#/section/{{../name}}/{{name}}/" {{keyHandler 'dynamic: leaveUp#menu' 'right' 'dynamic: leaveDown#menu' 'left'}}>
+            <a href="#/section/{{../name}}/{{name}}/" {{keyHandler '!leaveUp#menu' 'right' '!leaveDown#menu' 'left' ../index}}>
               {{title}}
             </a>
           </li>
