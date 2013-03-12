@@ -19,6 +19,7 @@ filesToLoad = [
   'controller/home-partial-controller'
   'controller/section-partial-controller'
   'controller/subsection-partial-controller'
+  'directive/key-handler'
   'view/loader-view'
   'view/menu-view'
   'view/home-partial-view'
