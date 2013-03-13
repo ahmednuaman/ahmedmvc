@@ -21,6 +21,7 @@ filesToLoad = [
   'controller/subsection-partial-controller'
   'directive/each-directive'
   'directive/key-handler-directive'
+  'directive/smallest-directive'
   'view/loader-view'
   'view/menu-view'
   'view/home-partial-view'

@@ -4,9 +4,9 @@
       <a href="#/section/{{name}}/"
         id="menu-link-{{name}}-a"
         data-key-up="!leaveUp#menu"
-        data-key-right="#menu-link-{{next.name}}"
-        data-key-down="#menu-link-{{name}}-{{children.0.name}}-a"
-        data-key-left="#menu-link-{{previous.name}}"
+        data-key-right="#menu-link-{{next.name}}-a"
+        data-key-down="#menu > ul.menu-parent > li.selected > ul.menu-child > li:nth-child({{nth}}) > a"
+        data-key-left="#menu-link-{{previous.name}}-a"
         data-col="{{index}}"
         {{keyHandler}}>
         {{title}}
@@ -16,10 +16,10 @@
           <li id="menu-link-{{../name}}-{{name}}">
             <a href="#/section/{{../name}}/{{name}}/"
               id="menu-link-{{../name}}-{{name}}-a"
-              data-key-up="#menu li:nth-child({{nth}}) a"
-              data-key-right="#menu-link-{{next.name}}"
+              data-key-up="#menu > ul.menu-parent > li:nth-child({{smallest nth ../lastIndex}}) > a"
+              data-key-right="#menu-link-{{../name}}-{{next.name}}-a"
               data-key-down="!leaveDown#menu"
-              data-key-left="#menu-link-{{previous.name}}"
+              data-key-left="#menu-link-{{../name}}-{{previous.name}}-a"
               data-col="{{index}}"
               {{keyHandler}}>
               {{title}}

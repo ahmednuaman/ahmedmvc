@@ -31,6 +31,8 @@ class MenuView extends View
     for link in @links
       @links[_i] = $ link
 
+    @links[0].focus()
+
     update = _.bind @stateUpdate, @
     regex = '^section?\/?([^\/]+)?\/?'
 
