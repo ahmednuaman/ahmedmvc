@@ -1,9 +1,44 @@
 <div id="home-partial">
   <ul>
-    <li><a href="#" id="home-partial-link-0" {{keyHandler '!leaveUp#home-partial' 'home-partial-link-1' '!leaveDown#home-partial' 'home-partial-link-4' 0}}>A link</a></li>
-    <li><a href="#" id="home-partial-link-1" {{keyHandler '!leaveUp#home-partial' 'home-partial-link-2' '!leaveDown#home-partial' 'home-partial-link-0' 1}}>A link</a></li>
-    <li><a href="#" id="home-partial-link-2" {{keyHandler '!leaveUp#home-partial' 'home-partial-link-3' '!leaveDown#home-partial' 'home-partial-link-1' 2}}>A link</a></li>
-    <li><a href="#" id="home-partial-link-3" {{keyHandler '!leaveUp#home-partial' 'home-partial-link-4' '!leaveDown#home-partial' 'home-partial-link-2' 3}}>A link</a></li>
-    <li><a href="#" id="home-partial-link-4" {{keyHandler '!leaveUp#home-partial' 'home-partial-link-0' '!leaveDown#home-partial' 'home-partial-link-3' 4}}>A link</a></li>
+    <li><a href="#"
+          id="home-partial-link-0"
+          data-key-up="!leaveUp#home-partial"
+          data-key-right="home-partial-link-1"
+          data-key-down="!leaveDown#home-partial"
+          data-key-left="home-partial-link-4"
+          data-col="0"
+          {{keyHandler}}>A link</a></li>
+    <li><a href="#"
+          id="home-partial-link-1"
+          data-key-up="!leaveUp#home-partial"
+          data-key-right="home-partial-link-2"
+          data-key-down="!leaveDown#home-partial"
+          data-key-left="home-partial-link-0"
+          data-col="1"
+          {{keyHandler}}>A link</a></li>
+    <li><a href="#"
+          id="home-partial-link-2"
+          data-key-up="!leaveUp#home-partial"
+          data-key-right="home-partial-link-3"
+          data-key-down="!leaveDown#home-partial"
+          data-key-left="home-partial-link-1"
+          data-col="2"
+          {{keyHandler}}>A link</a></li>
+    <li><a href="#"
+          id="home-partial-link-3"
+          data-key-up="!leaveUp#home-partial"
+          data-key-right="home-partial-link-4"
+          data-key-down="!leaveDown#home-partial"
+          data-key-left="home-partial-link-2"
+          data-col="3"
+          {{keyHandler}}>A link</a></li>
+    <li><a href="#"
+          id="home-partial-link-4"
+          data-key-up="!leaveUp#home-partial"
+          data-key-right="home-partial-link-0"
+          data-key-down="!leaveDown#home-partial"
+          data-key-left="home-partial-link-3"
+          data-col="4"
+          {{keyHandler}}>A link</a></li>
   </ul>
 </div>

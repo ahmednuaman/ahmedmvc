@@ -5,8 +5,8 @@
         id="menu-link-{{name}}-a"
         data-key-up="!leaveUp#menu"
         data-key-right="#menu-link-{{next.name}}"
-        data-key-down="#menu-link-{{name}}-{{children.name}}-a"
-        data-key-left="#menu-link-{{prev.name}}"
+        data-key-down="#menu-link-{{name}}-{{children.0.name}}-a"
+        data-key-left="#menu-link-{{previous.name}}"
         data-col="{{index}}"
         {{keyHandler}}>
         {{title}}
@@ -16,10 +16,10 @@
           <li id="menu-link-{{../name}}-{{name}}">
             <a href="#/section/{{../name}}/{{name}}/"
               id="menu-link-{{../name}}-{{name}}-a"
-              data-key-up="#menu li:nth-child({{index}}) a"
+              data-key-up="#menu li:nth-child({{nth}}) a"
               data-key-right="#menu-link-{{next.name}}"
               data-key-down="!leaveDown#menu"
-              data-key-left="#menu-link-{{prev.name}}"
+              data-key-left="#menu-link-{{previous.name}}"
               data-col="{{index}}"
               {{keyHandler}}>
               {{title}}
