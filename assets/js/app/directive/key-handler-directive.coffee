@@ -26,12 +26,13 @@ class KeyHandler
       when 13, 29443
         return element.click()
 
-    @moveFocus element, direction
+    if direction
+      @moveFocus element, direction
+
+    false
 
   moveFocus: (element, direction) ->
-    index = Number element.attr 'data-col'
     target = element.attr 'data-key-' + direction
-    console.log target
     dynamic = target.indexOf('!') is 0
 
     if dynamic
@@ -40,37 +41,46 @@ class KeyHandler
       direction = target[0]
       parent = $ '#' + target[1]
 
+      index = Number element.attr 'data-col'
       parentIndex = Number parent.attr 'data-index'
-
       parents = $ 'div.focus-parent'
       parentsLength = parents.length - 1
 
-      if direction is 'leaveUp'
-        parentIndex--
+      @findKeyHandler direction, index, parentIndex, parents, parentsLength
 
-      else if direction is 'leaveDown'
-        parentIndex++
+    else
+      target = $ target
+      target.focus()
 
-      if parentIndex < 0
-        parentIndex = parentsLength
+  findKeyHandler: (direction, index, parentIndex, parents, parentsLength) ->
+    if direction is 'leaveUp'
+      parentIndex--
 
-      else if parentIndex > parentsLength
-        parentIndex = 0
+    else if direction is 'leaveDown'
+      parentIndex++
 
-      parent = parents[parentIndex]
+    if parentIndex < 0
+      parentIndex = parentsLength
 
-      keyHandlers = $ 'a[data-key-handler]', parent
+    else if parentIndex > parentsLength
+      parentIndex = 0
+
+    parent = $ parents[parentIndex]
+
+    keyHandlers = $ 'a[data-key-handler]:visible', parent
+
+    if keyHandlers.length
       keyHandlersLength = keyHandlers.length - 1
 
       if index > keyHandlersLength
         index = keyHandlersLength
 
-      keyHandler = keyHandlers[index]
-      keyHandler.focus()
+      keyHandler = $ keyHandlers[index]
 
-    else
-      target = $ target
-      target.focus()
+      if keyHandler.is ':visible'
+        return keyHandler.focus()
+
+    @findKeyHandler direction, index, parentIndex, parents, parentsLength
 
 try
   module.exports = KeyHandler

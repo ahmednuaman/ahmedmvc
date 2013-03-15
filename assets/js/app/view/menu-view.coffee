@@ -54,9 +54,7 @@ class MenuView extends View
     child = @element.find '#' + link.parent().attr('id') + '-children'
 
     if hashIndex isnt -1 and path.length > 1
-      keyHandlers = child.find('a[data-key-handler]').length - 1
-
-      child.attr('data-children', keyHandlers).addClass 'selected'
+      child.addClass 'selected'
 
     else
       child.removeClass 'selected'

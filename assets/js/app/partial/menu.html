@@ -1,4 +1,4 @@
-<div id="menu-parent" class="focus-parent" data-index="0" data-children="{{items.lastIndex}}">
+<div id="menu-parent" class="focus-parent" data-index="0">
   <ul class="menu-parent">
     {{#each items}}
       <li id="menu-link-{{name}}">
@@ -17,16 +17,16 @@
     {{/each}}
   </ul>
 </div>
-<div id="menu-children" class="focus-parent" data-index="1" data-children="0">
+<div id="menu-children" class="focus-parent" data-index="1">
   {{#each items}}
     <ul class="menu-children" id="menu-link-{{name}}-children">
       {{#each children}}
         <li id="menu-link-{{../name}}-{{name}}">
           <a href="#/section/{{../name}}/{{name}}/"
             id="menu-link-{{../name}}-{{name}}-a"
-            data-key-up="!leaveUp#menu-child"
+            data-key-up="!leaveUp#menu-children"
             data-key-right="#menu-link-{{../name}}-{{next.name}}-a"
-            data-key-down="!leaveDown#menu-child"
+            data-key-down="!leaveDown#menu-children"
             data-key-left="#menu-link-{{../name}}-{{previous.name}}-a"
             data-col="{{index}}"
             {{keyHandler}}>
