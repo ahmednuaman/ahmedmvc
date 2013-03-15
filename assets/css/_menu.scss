@@ -35,21 +35,21 @@
   ul.menu-parent {
     float: left;
 
-    li.selected ul.menu-child {
-      visibility: visible;
-    }
-
     a {
       font-size: 15pt;
       padding: 8px 20px;
     }
   }
 
-  ul.menu-child {
-    visibility: hidden;
+  ul.menu-children {
+    display: none;
     position: absolute;
     left: 5px;
     margin-top: 40px;
+
+    &.selected {
+      display: block;
+    }
 
     a {
       font-size: 11pt;

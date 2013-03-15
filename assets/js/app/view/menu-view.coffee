@@ -27,10 +27,15 @@ class MenuView extends View
 
   handleRendered: () ->
     @links = @element.find('a').toArray()
+    topLinks = []
 
     for link in @links
-      @links[_i] = $ link
+      link = $ link
 
+      if link.hasClass 'menu-parent-link'
+        topLinks.push link
+
+    @links = topLinks
     @links[0].focus()
 
     update = _.bind @stateUpdate, @
@@ -46,11 +51,12 @@ class MenuView extends View
 
   updateClass: (path, link) ->
     hashIndex = link.attr('href').indexOf(path)
+    children = @element.find '#' + link.parent().attr('id') + '-children'
 
     if hashIndex isnt -1 and path.length > 1
-      link.parent().addClass 'selected'
+      children.addClass 'selected'
 
     else
-      link.parent().removeClass 'selected'
+      children.removeClass 'selected'
 
 app.module 'MenuView', MenuView

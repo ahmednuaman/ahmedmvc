@@ -1,32 +1,39 @@
-<ul class="menu-parent">
+<div id="menu-parent" class="focus-parent" data-index="0">
+  <ul class="menu-parent">
+    {{#each items}}
+      <li id="menu-link-{{name}}">
+        <a href="#/section/{{name}}/"
+          id="menu-link-{{name}}-a"
+          class="menu-parent-link"
+          data-key-up="!leaveUp#menu-parent"
+          data-key-right="#menu-link-{{next.name}}-a"
+          data-key-down="!leaveDown#menu-parent"
+          data-key-left="#menu-link-{{previous.name}}-a"
+          data-col="{{index}}"
+          {{keyHandler}}>
+          {{title}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+<div id="menu-children" class="focus-parent" data-index="1">
   {{#each items}}
-    <li id="menu-link-{{name}}">
-      <a href="#/section/{{name}}/"
-        id="menu-link-{{name}}-a"
-        data-key-up="!leaveUp#menu"
-        data-key-right="#menu-link-{{next.name}}-a"
-        data-key-down="#menu > ul.menu-parent > li.selected > ul.menu-child > li:nth-child({{nth}}) > a"
-        data-key-left="#menu-link-{{previous.name}}-a"
-        data-col="{{index}}"
-        {{keyHandler}}>
-        {{title}}
-      </a>
-      <ul class="menu-child">
-        {{#each children}}
-          <li id="menu-link-{{../name}}-{{name}}">
-            <a href="#/section/{{../name}}/{{name}}/"
-              id="menu-link-{{../name}}-{{name}}-a"
-              data-key-up="#menu > ul.menu-parent > li:nth-child({{smallest nth ../lastIndex}}) > a"
-              data-key-right="#menu-link-{{../name}}-{{next.name}}-a"
-              data-key-down="!leaveDown#menu"
-              data-key-left="#menu-link-{{../name}}-{{previous.name}}-a"
-              data-col="{{index}}"
-              {{keyHandler}}>
-              {{title}}
-            </a>
-          </li>
-        {{/each}}
-      </ul>
-    </li>
+    <ul class="menu-children" id="menu-link-{{name}}-children">
+      {{#each children}}
+        <li id="menu-link-{{../name}}-{{name}}">
+          <a href="#/section/{{../name}}/{{name}}/"
+            id="menu-link-{{../name}}-{{name}}-a"
+            data-key-up="!leaveUp#menu-child"
+            data-key-right="#menu-link-{{../name}}-{{next.name}}-a"
+            data-key-down="!leaveDown#menu-child"
+            data-key-left="#menu-link-{{../name}}-{{previous.name}}-a"
+            data-col="{{index}}"
+            {{keyHandler}}>
+            {{title}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
   {{/each}}
-</ul>
+</div>
