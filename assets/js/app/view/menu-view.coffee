@@ -51,12 +51,14 @@ class MenuView extends View
 
   updateClass: (path, link) ->
     hashIndex = link.attr('href').indexOf(path)
-    children = @element.find '#' + link.parent().attr('id') + '-children'
+    child = @element.find '#' + link.parent().attr('id') + '-children'
 
     if hashIndex isnt -1 and path.length > 1
-      children.addClass 'selected'
+      keyHandlers = child.find('a[data-key-handler]').length - 1
+
+      child.attr('data-children', keyHandlers).addClass 'selected'
 
     else
-      children.removeClass 'selected'
+      child.removeClass 'selected'
 
 app.module 'MenuView', MenuView

@@ -1,4 +1,4 @@
-<div id="menu-parent" class="focus-parent" data-index="0">
+<div id="menu-parent" class="focus-parent" data-index="0" data-children="{{items.lastIndex}}">
   <ul class="menu-parent">
     {{#each items}}
       <li id="menu-link-{{name}}">
@@ -17,7 +17,7 @@
     {{/each}}
   </ul>
 </div>
-<div id="menu-children" class="focus-parent" data-index="1">
+<div id="menu-children" class="focus-parent" data-index="1" data-children="0">
   {{#each items}}
     <ul class="menu-children" id="menu-link-{{name}}-children">
       {{#each children}}

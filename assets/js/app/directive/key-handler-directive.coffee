@@ -31,6 +31,7 @@ class KeyHandler
   moveFocus: (element, direction) ->
     index = Number element.attr 'data-col'
     target = element.attr 'data-key-' + direction
+    console.log target
     dynamic = target.indexOf('!') is 0
 
     if dynamic
