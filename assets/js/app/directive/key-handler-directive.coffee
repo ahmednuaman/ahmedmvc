@@ -3,7 +3,7 @@ class KeyHandler
   constructor: () ->
 
   directive: () ->
-    attrs = 'onkeydown="keyHandler.keyDown(event)"'
+    attrs = 'onkeydown="keyHandler.keyDown(event)" data-key-handler'
 
     new Handlebars.SafeString attrs
 

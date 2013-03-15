@@ -3,7 +3,6 @@ class SmallestDirective
   constructor: () ->
 
   directive: (test1, test2, options) ->
-    console.log arguments
     if test1 > test2
       out = test2
 
