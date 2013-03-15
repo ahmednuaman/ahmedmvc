@@ -57,6 +57,7 @@ class KeyHandler
         parentIndex = 0
 
       parent = parents[parentIndex]
+      console.log parent
 
       keyHandlers = $ 'a[data-key-handler]', parent
       keyHandlersLength = keyHandlers.length - 1
