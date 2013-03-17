@@ -3,9 +3,9 @@ class LoaderView
     @element = $ '#loader'
 
   hide: () ->
-    @element.hide()
+    @element.fadeOut()
 
   show: () ->
-    @element.show()
+    @element.fadeIn()
 
 app.module 'LoaderView', LoaderView
