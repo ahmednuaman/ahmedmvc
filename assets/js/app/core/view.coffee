@@ -30,6 +30,19 @@ class View
     @html = @template @data
     @element.html @html
 
+    if !window.hashashchange
+      as = $ 'a[href^="#"]', @element
+
+      as.click (event) ->
+        a = $ this
+        hash = a.attr('href').split('#')[1]
+
+        window.location.hash = hash
+
+        window.onhashchange()
+
+        false
+
     dfd.resolve()
 
 try

@@ -9,6 +9,8 @@ class StateManager
   listenToHashChange: () ->
     change = _.bind @handleHashChange, @
 
+    window.hashashchange = window['onhashchange']?
+
     window.onhashchange = change
 
   handleHashChange: () ->

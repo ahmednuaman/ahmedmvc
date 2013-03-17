@@ -24,7 +24,9 @@ class KeyHandler
         direction = 'right'
 
       when 13, 29443
-        return element.click()
+        element.click()
+
+        return false
 
     if direction
       @moveFocus element, direction
