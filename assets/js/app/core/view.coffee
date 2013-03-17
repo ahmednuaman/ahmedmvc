@@ -45,6 +45,9 @@ class View
 
     dfd.resolve()
 
+  remove: () ->
+    @element.remove()
+
 try
   module.exports = View
 catch e

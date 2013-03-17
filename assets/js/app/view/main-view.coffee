@@ -32,7 +32,12 @@ class MainView
     view.render dfd
 
   handleRouteRenderComplete: (view) ->
-    @element.empty().append view.element
+    if @currentView
+      @currentView.remove()
+
+    @currentView = view
+
+    @element.empty().append @currentView.element
 
     @loaderView.hide()
 
